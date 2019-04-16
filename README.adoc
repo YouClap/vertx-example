@@ -1,10 +1,15 @@
-= Template
+= Youclap Vertx Template for services ☁️
 
 image:https://img.shields.io/badge/vert.x-3.7.0-purple.svg[link="https://vertx.io"]
 
-This application was generated using http://start.vertx.io
+⚠️  Under development... 🚧
 
 == Building
+
+To run your application:
+```
+./gradlew clean run
+```
 
 To launch your tests:
 ```
@@ -13,19 +18,10 @@ To launch your tests:
 
 To package your application:
 ```
-./gradlew clean assemble
+./gradlew clean shadowJar
 ```
 
-To run your application:
-```
-./gradlew clean run
-```
+== About
 
-== Help
-
-* https://vertx.io/docs/[Vert.x Documentation]
-* https://stackoverflow.com/questions/tagged/vert.x?sort=newest&pageSize=15[Vert.x Stack Overflow]
-* https://groups.google.com/forum/?fromgroups#!forum/vertx[Vert.x User Group]
-* https://gitter.im/eclipse-vertx/vertx-users[Vert.x Gitter]
-
+With ♥ from link:https://youclap.tech[Youclap] mailto://development@youclap.tech[Development Team]
 
