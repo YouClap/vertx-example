@@ -1,0 +1,44 @@
+
+.job_template: &run_on_hq # TODO maybe change this to a shared project?
+    tags:
+        - docker
+        - hq
+
+stages:
+    - Build
+    - Docker
+
+
+Build:
+    image: openjdk:8-jdk-alpine
+    stage: Build
+    <<: *run_on_hq
+    script:
+        - export GRADLE_USER_HOME=`pwd`/.gradle
+        - ./gradlew build
+    cache:
+        paths:
+            - .gradle/wrapper
+            - .gradle/caches
+    artifacts:
+        paths:
+            - build/libs/template-0.1.0-SNAPSHOT-fat.jar
+        expire_in: 1 day
+
+Deploy:
+    stage: Docker
+    <<: *run_on_hq
+    image: docker:stable
+    services:
+        - docker:dind
+    dependencies:
+        - Build
+    variables:
+        DOCKER_HOST: tcp://docker:2375/
+        DOCKER_DRIVER: overlay2
+        REGISTRY: registry.gitlab.com
+    script:
+        - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $REGISTRY
+        - docker build -t $REGISTRY/youclap/backend/vertx-template .
+        - docker push $REGISTRY/youclap/backend/vertx-template
+
