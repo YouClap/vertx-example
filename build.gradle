@@ -15,7 +15,7 @@ ext {
 }
 
 group = 'tech.youclap'
-version = '1.0.0-SNAPSHOT'
+version = '0.1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -27,7 +27,7 @@ application {
 }
 
 
-def mainVerticleName = 'tech.youclap.template.Server'
+def mainVerticleName = 'tech.youclap.template.MainVerticle'
 
 
 dependencies {
@@ -54,6 +54,7 @@ compileTestKotlin {
 
 shadowJar {
     classifier = 'fat'
+//    minimize()
     manifest {
         attributes 'Main-Verticle': mainVerticleName
     }
