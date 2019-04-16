@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-alpine
 
-ENV VERTICLE_FILE template-0.1.0-SNAPSHOT-fat.jar
+ENV VERTICLE_FILE example-0.1.0-SNAPSHOT-fat.jar
 
 # Set the location of the verticles
 ENV VERTICLE_HOME /usr/verticles

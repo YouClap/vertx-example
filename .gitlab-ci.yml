@@ -4,6 +4,9 @@
         - docker
         - hq
 
+.job_template: &manual_trigger
+    when: manual
+
 stages:
     - Build
     - Docker
@@ -22,12 +25,13 @@ Build:
             - .gradle/caches
     artifacts:
         paths:
-            - build/libs/template-0.1.0-SNAPSHOT-fat.jar
+            - build/libs/example-0.1.0-SNAPSHOT-fat.jar
         expire_in: 1 day
 
 Deploy:
     stage: Docker
     <<: *run_on_hq
+    <<: *manual_trigger
     image: docker:stable
     services:
         - docker:dind
@@ -39,6 +43,6 @@ Deploy:
         REGISTRY: registry.gitlab.com
     script:
         - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $REGISTRY
-        - docker build -t $REGISTRY/youclap/backend/vertx-template .
-        - docker push $REGISTRY/youclap/backend/vertx-template
+        - docker build -t $REGISTRY/youclap/backend/vertx-example .
+        - docker push $REGISTRY/youclap/backend/vertx-example
 

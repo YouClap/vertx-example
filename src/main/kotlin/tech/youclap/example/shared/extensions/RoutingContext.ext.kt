@@ -1,8 +1,8 @@
-package tech.youclap.template.extensions
+package tech.youclap.example.shared.extensions
 
 import io.vertx.core.http.HttpHeaders
 import io.vertx.core.json.Json
-import io.vertx.ext.web.RoutingContext
+import io.vertx.reactivex.ext.web.RoutingContext
 
 fun RoutingContext.endAsJson(obj: Any) {
     response()
