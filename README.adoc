@@ -1,4 +1,4 @@
-= Youclap Vertx Template for services ☁️
+= Youclap Vertx Example for services ☁️
 
 image:https://img.shields.io/badge/vert.x-3.7.0-purple.svg[link="https://vertx.io"]
 
